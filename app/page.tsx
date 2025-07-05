@@ -174,7 +174,7 @@ export default function Portfolio() {
           <div className="flex items-center h-full">
             <Card className="bg-[#1a1a1a] border-[#2a2a2a] p-8 rounded-3xl w-full">
               <CardContent className="p-0 text-center">
-                <div className="w-full h-48 mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-600 to-blue-600 p-1 ">
+                <div className="w-full h-[250px] mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-600 to-blue-600 p-1 ">
                   <div className="w-full h-full rounded-2xl bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
                     <Image
                       src="/mayur-profile.jpeg"
