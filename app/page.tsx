@@ -669,7 +669,11 @@ export default function Portfolio() {
         <div className="fixed top-0 left-0 right-0 bg-[#1a1a1a] border-b border-[#2a2a2a] p-4 z-50">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-lg font-bold">Mayur Wagh</h1>
+              <h1 className="text-lg font-bold">
+                <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                  Mayur Wagh
+                </span>
+              </h1>
               <p className="text-sm text-gray-400">MERN Stack Developer</p>
             </div>
             <Button
@@ -759,20 +763,24 @@ export default function Portfolio() {
           <div className="flex items-center h-full">
             <Card className="bg-[#1a1a1a] border-[#2a2a2a] p-8 rounded-3xl w-full">
               <CardContent className="p-0 text-center">
-                <div className="w-full h-48 mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-600 to-blue-600 p-1">
+                <div className="w-full h-48 mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-600 to-blue-600 p-1 ">
                   <div className="w-full h-full rounded-2xl bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
                     <Image
                       src="/mayur-profile.jpeg"
                       alt="Mayur Wagh"
-                      width={200}
-                      height={200}
+                      width={100}
+                      height={100}
                       className="w-full h-full object-cover rounded-2xl"
                       priority
                     />
                   </div>
                 </div>
 
-                <h2 className="text-2xl font-bold mb-2">Mayur Wagh</h2>
+                <h2 className="text-2xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                    Mayur Wagh
+                  </span>
+                </h2>
                 <p className="text-gray-400 mb-1">MERN Stack Developer</p>
                 <p className="text-gray-500 mb-4 flex items-center justify-center gap-1 text-sm">
                   <MapPin className="h-4 w-4" />
