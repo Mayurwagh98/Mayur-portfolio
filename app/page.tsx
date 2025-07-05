@@ -16,14 +16,8 @@ import {
   Calendar,
   Building,
   GraduationCap,
-  Home,
-  Folder,
   Wrench,
-  Briefcase,
-  Edit,
-  MailIcon,
   X,
-  Download,
   Code,
   Server,
   Cloud,
@@ -32,21 +26,16 @@ import {
   Menu,
 } from "lucide-react";
 import Image from "next/image";
+import { experiences, projects, education } from "@/lib/constants";
+import ResumeModal from "@/components/ResumeModal";
+import Navbar from "@/components/Navbar";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
   const [showResume, setShowResume] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
-  const navItems = [
-    { id: "home", icon: Home, label: "Home" },
-    { id: "about", icon: Edit, label: "About" },
-    { id: "experience", icon: Briefcase, label: "Experience" },
-    { id: "projects", icon: Folder, label: "Projects" },
-    { id: "skills", icon: Wrench, label: "Skills" },
-    { id: "collaborate", icon: MailIcon, label: "Contact" },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,561 +87,9 @@ export default function Portfolio() {
     setIsMobileMenuOpen(false);
   };
 
-  const experiences = [
-    {
-      title: "MERN Full Stack Developer",
-      company: "Intervue Labs Pvt. Ltd.",
-      period: "Jun 2023 - Present",
-      description:
-        "Spearheaded the development of an AI-driven interview platform designed to eliminate the need for human intervention in the interview process.",
-      achievements: [
-        "Built platform from scratch using React.js, Next.js, Node.js, Express.js, MongoDB, Tailwind CSS",
-        "Developed autonomous interview bot for seamless candidate experience",
-        "Contributed to end-to-end design, development, and deployment",
-        "Streamlined recruitment process, reducing manual effort and improving efficiency",
-      ],
-      color: "from-blue-500 to-purple-600",
-    },
-    {
-      title: "Instructional Associate",
-      company: "Masai School (EdTech)",
-      period: "Apr 2022 - Feb 2023",
-      description:
-        "Provided technical guidance and resolved doubts for students in the MERN stack, enhancing their understanding and proficiency.",
-      achievements: [
-        "Guided students in MongoDB, Express.js, React, Node.js",
-        "Conducted and managed student evaluations",
-        "Enhanced overall educational experience for students",
-        "Collaborated with team to improve curriculum delivery",
-      ],
-      color: "from-green-500 to-teal-600",
-    },
-  ];
-
-  const projects = [
-    {
-      title: "AI Interview Platform",
-      subtitle: "Full-Stack AI Application",
-      description:
-        "Revolutionary AI-driven interview platform that eliminates human intervention in the recruitment process. Features autonomous interview bots, real-time candidate assessment, and comprehensive analytics dashboard.",
-      longDescription:
-        "Built from scratch using modern technologies, this platform streamlines the entire interview process with AI-powered conversations, automated scoring, and detailed candidate insights.",
-      period: "Jun 2023 - Present",
-      status: "Live Production",
-      color: "from-blue-500 via-purple-500 to-indigo-600",
-      tags: ["React.js", "Next.js", "Node.js", "MongoDB", "AI/ML", "WebRTC"],
-      features: [
-        "AI-Powered Interviews",
-        "Real-time Analytics",
-        "Automated Scoring",
-        "Video Integration",
-      ],
-      metrics: { users: "500+", interviews: "2000+", accuracy: "95%" },
-      links: { live: "#", github: "#" },
-      icon: "🤖",
-    },
-    {
-      title: "NextJS Music Platform",
-      subtitle: "Modern Music Streaming App",
-      description:
-        "Sleek and responsive music streaming application with intuitive user interface, advanced search capabilities, and seamless audio playback experience.",
-      longDescription:
-        "A comprehensive music platform featuring playlist management, social sharing, and personalized recommendations powered by modern web technologies.",
-      period: "Jan 2024 - Mar 2024",
-      status: "Completed",
-      color: "from-purple-500 via-pink-500 to-rose-600",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "Audio API"],
-      features: [
-        "Streaming Audio",
-        "Playlist Management",
-        "Social Features",
-        "Responsive Design",
-      ],
-      metrics: { tracks: "10K+", users: "200+", uptime: "99.9%" },
-      links: { live: "#", github: "#" },
-      icon: "🎵",
-    },
-    {
-      title: "DevMatch Network",
-      subtitle: "Developer Networking Platform",
-      description:
-        "Tinder-inspired networking platform for developers featuring swipe-based matching, secure authentication, and real-time messaging capabilities.",
-      longDescription:
-        "Connect developers worldwide through an innovative matching system, enabling professional networking, collaboration opportunities, and skill-based connections.",
-      period: "Apr 2024 - May 2024",
-      status: "In Development",
-      color: "from-orange-500 via-red-500 to-pink-600",
-      tags: ["React.js", "Node.js", "Socket.io", "JWT", "MongoDB", "DaisyUI"],
-      features: [
-        "Swipe Matching",
-        "Real-time Chat",
-        "Profile Verification",
-        "Skill Matching",
-      ],
-      metrics: { matches: "1K+", messages: "5K+", satisfaction: "92%" },
-      links: { live: "#", github: "#" },
-      icon: "💻",
-    },
-  ];
-
-  const skills = {
-    frontend: [
-      "React.js",
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
-      "TypeScript",
-      "Tailwind CSS",
-      "MUI",
-      "Redux",
-      "Redux Toolkit",
-    ],
-    backend: ["Node.js", "Express.js", "MongoDB", "RESTful API", "JWT"],
-    tools: [
-      "Git",
-      "GitHub",
-      "JIRA",
-      "Postman",
-      "MongoDB Compass",
-      "NPM",
-      "Vite",
-    ],
-    devops: ["Firebase", "AWS", "Vercel"],
-    additional: [
-      "CORS",
-      "API Integration",
-      "Debugging",
-      "Agile Methodology",
-      "Performance Optimization",
-      "Responsive Design",
-      "UI/UX",
-    ],
-  };
-
-  const education = [
-    {
-      institution: "Masai School, Bangalore",
-      degree: "Full-Stack Web Development",
-      period: "Nov 2021 - May 2022",
-      type: "Bootcamp",
-    },
-    {
-      institution: "Matoshri College Of Engineering and Research Center",
-      degree: "B.E. (Mechanical Engineer)",
-      period: "Aug 2015 - Jul 2019",
-      type: "Bachelor's",
-    },
-  ];
-
-  const certifications = [
-    "MERN Full Stack Development - Masai School (Apr 2023)",
-    "Basics of Web Development Certificate Course - Masai School (Dec 2021)",
-  ];
-
   // Resume Modal Component
-  const ResumeModal = () => {
-    if (!showResume) return null;
-
-    return (
-      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
-        <div className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-3xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
-          {/* Header */}
-          <div className="sticky top-0 bg-[#0a0a0a] border-b border-[#2a2a2a] p-4 sm:p-6 flex items-center justify-between">
-            <h2 className="text-xl sm:text-2xl font-bold">
-              Resume - Mayur Wagh
-            </h2>
-            <div className="flex gap-2">
-              <Button
-                size="icon"
-                variant="ghost"
-                className="rounded-full bg-[#2a2a2a] hover:bg-purple-600 w-8 h-8 sm:w-10 sm:h-10"
-                onClick={() => window.print()}
-              >
-                <Download className="h-3 w-3 sm:h-4 sm:w-4" />
-              </Button>
-              <Button
-                size="icon"
-                variant="ghost"
-                className="rounded-full bg-[#2a2a2a] hover:bg-red-600 w-8 h-8 sm:w-10 sm:h-10"
-                onClick={() => setShowResume(false)}
-              >
-                <X className="h-3 w-3 sm:h-4 sm:w-4" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Resume Content */}
-          <div className="p-4 sm:p-8 space-y-6 sm:space-y-8">
-            {/* Personal Information */}
-            <div className="text-center border-b border-[#2a2a2a] pb-6 sm:pb-8">
-              <h1 className="text-2xl sm:text-4xl font-bold mb-2">
-                Mayur Wagh
-              </h1>
-              <p className="text-lg sm:text-xl text-purple-400 mb-4">
-                MERN Stack Developer
-              </p>
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-gray-300 text-sm sm:text-base">
-                <div className="flex items-center gap-2">
-                  <Mail className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span className="break-all">mswagh98@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span>+91 820663529</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span>Nashik, Maharashtra</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Linkedin className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <a
-                    href="https://www.linkedin.com/in/mayur-wagh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-purple-400"
-                  >
-                    LinkedIn Profile
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Professional Summary */}
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-purple-400">
-                Professional Summary
-              </h2>
-              <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                Passionate MERN stack developer with 2+ years of experience in
-                creating innovative web solutions. Specialized in building
-                scalable, user-centric applications using modern technologies.
-                Proven track record of delivering high-quality projects from
-                conception to deployment. Strong background in both frontend and
-                backend development with expertise in React.js, Node.js, and
-                MongoDB. Experienced in mentoring and guiding junior developers.
-              </p>
-            </div>
-
-            {/* Work Experience */}
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-                Work Experience
-              </h2>
-              <div className="space-y-4 sm:space-y-6">
-                {experiences.map((exp, index) => (
-                  <div
-                    key={index}
-                    className="border-l-2 border-purple-500 pl-4 sm:pl-6"
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                      <h3 className="text-lg sm:text-xl font-bold">
-                        {exp.title}
-                      </h3>
-                      <span className="text-gray-400 text-sm sm:text-base">
-                        {exp.period}
-                      </span>
-                    </div>
-                    <p className="text-purple-400 mb-3 text-sm sm:text-base">
-                      {exp.company}
-                    </p>
-                    <p className="text-gray-200 mb-4 sm:mb-6 text-sm sm:text-base">
-                      {exp.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, achIndex) => (
-                        <li
-                          key={achIndex}
-                          className="flex items-start gap-2 text-gray-300 text-sm sm:text-base"
-                        >
-                          <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Projects */}
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-                Key Projects
-              </h2>
-              <div className="space-y-4 sm:space-y-6">
-                {projects.map((project, index) => (
-                  <div
-                    key={index}
-                    className="border border-[#2a2a2a] rounded-2xl p-4 sm:p-6"
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-                      <div>
-                        <h3 className="text-lg sm:text-xl font-bold">
-                          {project.title}
-                        </h3>
-                        <p className="text-purple-400 text-sm sm:text-base">
-                          {project.subtitle}
-                        </p>
-                      </div>
-                      <span className="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-0">
-                        {project.period}
-                      </span>
-                    </div>
-                    <p className="text-gray-300 mb-4 text-sm sm:text-base">
-                      {project.description}
-                    </p>
-                    <div className="mb-4">
-                      <h4 className="font-semibold mb-2 text-purple-400 text-sm sm:text-base">
-                        Key Features:
-                      </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {project.features.map((feature, featureIndex) => (
-                          <div
-                            key={featureIndex}
-                            className="flex items-center gap-2 text-gray-300"
-                          >
-                            <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
-                            <span className="text-xs sm:text-sm">
-                              {feature}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mb-4">
-                      <h4 className="font-semibold mb-2 text-purple-400 text-sm sm:text-base">
-                        Technologies Used:
-                      </h4>
-                      <div className="flex flex-wrap gap-1 sm:gap-2">
-                        {project.tags.map((tag, tagIndex) => (
-                          <Badge
-                            key={tagIndex}
-                            variant="secondary"
-                            className="text-xs"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-2 sm:gap-4">
-                      {Object.entries(project.metrics).map(
-                        ([key, value], metricIndex) => (
-                          <div key={metricIndex} className="text-center">
-                            <div className="text-sm sm:text-lg font-bold text-purple-400">
-                              {value}
-                            </div>
-                            <div className="text-xs text-gray-400 capitalize">
-                              {key}
-                            </div>
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Technical Skills */}
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-                Technical Skills
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">
-                    Frontend Development
-                  </h3>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {skills.frontend.map((skill, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="bg-[#2a2a2a] text-gray-300 border-[#3a3a3a] hover:bg-[#3a3a3a] text-xs px-2 py-1"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">
-                    Backend Development
-                  </h3>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {skills.backend.map((skill, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="bg-[#2a2a2a] text-gray-300 border-[#3a3a3a] hover:bg-[#3a3a3a] text-xs px-2 py-1"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">
-                    Tools & Technologies
-                  </h3>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {skills.tools.map((skill, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="bg-[#2a2a2a] text-gray-300 border-[#3a3a3a] hover:bg-[#3a3a3a] text-xs px-2 py-1"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">
-                    Cloud & DevOps
-                  </h3>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {skills.devops.map((skill, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="bg-[#2a2a2a] text-gray-300 border-[#3a3a3a] hover:bg-[#3a3a3a] text-xs px-2 py-1"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Education */}
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-                Education
-              </h2>
-              <div className="space-y-4">
-                {education.map((edu, index) => (
-                  <div
-                    key={index}
-                    className="border-l-2 border-purple-500 pl-4 sm:pl-6"
-                  >
-                    <h3 className="text-base sm:text-lg font-bold">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-purple-400 text-sm sm:text-base">
-                      {edu.institution}
-                    </p>
-                    <p className="text-gray-400 text-sm sm:text-base">
-                      {edu.period}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Certifications */}
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-                Certifications
-              </h2>
-              <div className="space-y-3">
-                {certifications.map((cert, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 text-gray-300 text-sm sm:text-base"
-                  >
-                    <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-purple-400 flex-shrink-0" />
-                    <span>{cert}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Additional Information */}
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-                Additional Information
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">
-                    Languages
-                  </h3>
-                  <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
-                    <li>• English (Professional)</li>
-                    <li>• Hindi (Native)</li>
-                    <li>• Marathi (Native)</li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">
-                    Interests
-                  </h3>
-                  <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
-                    <li>• Open Source Contribution</li>
-                    <li>• Mentoring Developers</li>
-                    <li>• Technology Blogging</li>
-                    <li>• Continuous Learning</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   // Loading Screen Component
-  const LoadingScreen = () => {
-    return (
-      <div className="fixed inset-0 bg-[#0a0a0a] z-[100] flex items-center justify-center">
-        {/* Background gradient effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-indigo-600/20 rounded-full blur-2xl animate-pulse delay-500"></div>
-        </div>
-
-        {/* Loading content */}
-        <div className="relative z-10 text-center">
-          {/* Profile image placeholder */}
-          <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 p-1 animate-spin">
-            <div className="w-full h-full rounded-full bg-[#0a0a0a] flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-900/50 to-blue-900/50 flex items-center justify-center">
-                <span className="text-2xl font-bold">MW</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Loading text */}
-          <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
-            Mayur Wagh
-          </h1>
-          <p className="text-gray-400 mb-8 text-lg">MERN Stack Developer</p>
-
-          {/* Loading animation */}
-          <div className="flex items-center justify-center space-x-2 mb-8">
-            <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce"></div>
-            <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce delay-100"></div>
-            <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce delay-200"></div>
-          </div>
-
-          {/* Loading progress bar */}
-          <div className="w-64 h-1 bg-[#2a2a2a] rounded-full mx-auto overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-purple-600 to-blue-600 rounded-full animate-pulse"></div>
-          </div>
-
-          <p className="text-gray-500 mt-4 text-sm animate-pulse">
-            Loading portfolio...
-          </p>
-        </div>
-      </div>
-    );
-  };
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -661,7 +98,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Resume Modal */}
-      <ResumeModal />
+      <ResumeModal setShowResume={setShowResume} showResume={showResume} />
 
       {/* Mobile Navigation */}
       <div className="lg:hidden">
@@ -723,38 +160,12 @@ export default function Portfolio() {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden lg:block fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="flex items-center gap-2 bg-[#1a1a1a] rounded-2xl p-2 border border-[#2a2a2a] backdrop-blur-md">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.id;
-
-            return (
-              <div key={item.id} className="relative group">
-                <button
-                  onClick={() => scrollToSection(item.id)}
-                  className={`p-3 rounded-xl transition-all duration-200 ${
-                    isActive
-                      ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white"
-                      : "text-gray-400 hover:text-white hover:bg-[#2a2a2a]"
-                  }`}
-                  aria-label={item.label}
-                >
-                  <Icon className="h-6 w-6" />
-                </button>
-
-                {/* Tooltip */}
-                <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-                  <div className="bg-[#2a2a2a] text-white text-sm px-3 py-1 rounded-lg whitespace-nowrap">
-                    {item.label}
-                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#2a2a2a] rotate-45"></div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </nav>
+      {!showResume && (
+        <Navbar
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+        />
+      )}
 
       {/* Main Content Layout */}
       <div className="lg:flex">
@@ -1046,7 +457,7 @@ export default function Portfolio() {
                       <div className="p-4 sm:p-8">
                         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                           <div>
-                            <h3 className="text-lg sm:text-xl font-bold mb-2">
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">
                               {exp.title}
                             </h3>
                             <div className="flex items-center gap-2 text-purple-400 mb-2">
@@ -1244,7 +655,7 @@ export default function Portfolio() {
                             <Badge
                               key={tagIndex}
                               variant="secondary"
-                              className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-500/30 text-purple-300 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-300 text-xs"
+                              className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-500/30 text-purple-300 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-300 text-xs text-black"
                             >
                               {tag}
                             </Badge>
@@ -1366,7 +777,7 @@ export default function Portfolio() {
                         <Code className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl sm:text-2xl font-bold">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white">
                           Frontend Development
                         </h3>
                         <p className="text-gray-400 text-sm sm:text-base">
@@ -1446,7 +857,7 @@ export default function Portfolio() {
                         <Server className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl sm:text-2xl font-bold">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white">
                           Backend Development
                         </h3>
                         <p className="text-gray-400 text-sm sm:text-base">
@@ -1537,7 +948,7 @@ export default function Portfolio() {
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
                         <Wrench className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">
                         Development Tools
                       </h3>
                     </div>
@@ -1571,7 +982,7 @@ export default function Portfolio() {
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
                         <Cloud className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">
                         Cloud & DevOps
                       </h3>
                     </div>
@@ -1605,7 +1016,7 @@ export default function Portfolio() {
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
                         <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">
                         Additional Skills
                       </h3>
                     </div>
@@ -1674,7 +1085,7 @@ export default function Portfolio() {
                             <Award className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-lg sm:text-xl font-bold mb-2">
+                            <h4 className="text-lg sm:text-xl font-bold mb-2 text-white">
                               {cert.title}
                             </h4>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-3">
