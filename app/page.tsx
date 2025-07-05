@@ -1046,7 +1046,7 @@ export default function Portfolio() {
                       <div className="p-4 sm:p-8">
                         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                           <div>
-                            <h3 className="text-lg sm:text-xl font-bold mb-2">
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">
                               {exp.title}
                             </h3>
                             <div className="flex items-center gap-2 text-purple-400 mb-2">
@@ -1244,7 +1244,7 @@ export default function Portfolio() {
                             <Badge
                               key={tagIndex}
                               variant="secondary"
-                              className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-500/30 text-purple-300 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-300 text-xs"
+                              className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-500/30 text-purple-300 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-300 text-xs text-black"
                             >
                               {tag}
                             </Badge>
@@ -1366,7 +1366,7 @@ export default function Portfolio() {
                         <Code className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl sm:text-2xl font-bold">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white">
                           Frontend Development
                         </h3>
                         <p className="text-gray-400 text-sm sm:text-base">
@@ -1446,7 +1446,7 @@ export default function Portfolio() {
                         <Server className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl sm:text-2xl font-bold">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white">
                           Backend Development
                         </h3>
                         <p className="text-gray-400 text-sm sm:text-base">
@@ -1537,7 +1537,7 @@ export default function Portfolio() {
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
                         <Wrench className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">
                         Development Tools
                       </h3>
                     </div>
@@ -1571,7 +1571,7 @@ export default function Portfolio() {
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
                         <Cloud className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">
                         Cloud & DevOps
                       </h3>
                     </div>
@@ -1605,7 +1605,7 @@ export default function Portfolio() {
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
                         <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">
                         Additional Skills
                       </h3>
                     </div>
@@ -1674,7 +1674,7 @@ export default function Portfolio() {
                             <Award className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                           </div>
                           <div className="flex-1">
-                            <h4 className="text-lg sm:text-xl font-bold mb-2">
+                            <h4 className="text-lg sm:text-xl font-bold mb-2 text-white">
                               {cert.title}
                             </h4>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-3">
