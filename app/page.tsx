@@ -1256,14 +1256,16 @@ export default function Portfolio() {
 
               {/* Call to Action */}
               <div className="mt-16 sm:mt-20 text-center">
-                <Card className="bg-gradient-to-br from-purple-600/10 via-blue-600/10 to-indigo-600/10 border-purple-500/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm relative overflow-hidden">
+                <Card className="bg-gradient from-purple-600/10 via-blue-600/10 to-indigo-600/10 border-purple-500/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm relative overflow-hidden">
                   {/* Background decorative elements */}
                   <div className="absolute top-4 left-4 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
                   <div className="absolute bottom-4 right-4 w-24 h-24 bg-blue-500/10 rounded-full blur-lg"></div>
 
                   <CardContent className="p-0 relative z-10">
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                      Ready to Build Something Amazing?
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
+                      <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                        My Journey Ready to Build Something Amazing?
+                      </span>
                     </h3>
                     <p className="text-lg sm:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto">
                       Let's collaborate to bring your next big idea to life with
@@ -1691,14 +1693,16 @@ export default function Portfolio() {
 
               {/* Skills Call to Action */}
               <div className="text-center">
-                <Card className="bg-gradient-to-br from-purple-600/10 via-blue-600/10 to-indigo-600/10 border-purple-500/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm relative overflow-hidden">
+                <Card className="bg-gradient from-purple-600/10 via-blue-600/10 to-indigo-600/10 border-purple-500/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm relative overflow-hidden">
                   {/* Background decorative elements */}
                   <div className="absolute top-4 left-4 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
                   <div className="absolute bottom-4 right-4 w-24 h-24 bg-blue-500/10 rounded-full blur-lg"></div>
 
                   <CardContent className="p-0 relative z-10">
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                      Always Learning, Always Growing
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
+                      <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                        Always Learning, Always Growing
+                      </span>
                     </h3>
                     <p className="text-lg sm:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto">
                       Technology evolves rapidly, and so do I. I'm constantly
@@ -1732,14 +1736,14 @@ export default function Portfolio() {
             className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-20"
           >
             <div className="max-w-5xl w-full">
-              <Card className="bg-gradient-to-br from-purple-600/10 via-blue-600/10 to-indigo-600/10 border-purple-500/20 rounded-3xl p-8 sm:p-12 lg:p-20 relative overflow-hidden backdrop-blur-sm">
+              <Card className="bg-gradient from-purple-600/10 via-blue-600/10 to-indigo-600/10 border-purple-500/20 rounded-3xl p-8 sm:p-12 lg:p-20 relative overflow-hidden backdrop-blur-sm">
                 {/* Background decorative elements */}
                 <div className="absolute top-4 left-4 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
                 <div className="absolute bottom-4 right-4 w-24 h-24 bg-blue-500/10 rounded-full blur-lg"></div>
 
                 <CardContent className="p-0 relative z-10">
                   <div className="max-w-4xl">
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 leading-tight">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 leading-tight text-white">
                       Let's
                       <br />
                       <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
