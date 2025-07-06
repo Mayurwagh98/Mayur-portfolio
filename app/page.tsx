@@ -28,7 +28,7 @@ import {
 import Image from "next/image";
 import { experiences, projects, education } from "@/lib/constants";
 import ResumeModal from "@/components/ResumeModal";
-import Navbar from "@/components/Navbar";
+import Navbar, { navItems } from "@/components/Navbar";
 import LoadingScreen from "@/components/LoadingScreen";
 import GitHubActivitySection from "@/components/GithubStats";
 
