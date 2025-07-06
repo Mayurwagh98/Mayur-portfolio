@@ -164,7 +164,7 @@ const Projects = ({
                       <Badge
                         key={tagIndex}
                         variant="secondary"
-                        className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-500/30 text-purple-300 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-300 text-xs text-black"
+                        className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-500/30 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-300 text-xs text-black"
                       >
                         {tag}
                       </Badge>
