@@ -1,12 +1,11 @@
 import { ArrowRight, GraduationCap } from "lucide-react";
 import { Button } from "./ui/button";
+import { education } from "@/lib/constants";
 
 const Hero = ({
   scrollToSection,
-  education,
 }: {
   scrollToSection: (sectionId: string) => void;
-  education: any;
 }) => {
   return (
     <section
