@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function GitHubActivitySection() {
   return (
-    <section className="relative px-6 py-20 bg-[#0b0b0b] text-white">
+    <section className="relative px-6 py-20 bg-transparent text-white">
       <div className="max-w-5xl mx-auto text-center bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-3xl border border-purple-700/50 shadow-xl p-10 sm:p-16">
         <h3 className="text-3xl sm:text-4xl font-extrabold mb-8">
           🧑‍💻 GitHub{" "}
