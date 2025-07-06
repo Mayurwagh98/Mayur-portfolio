@@ -32,7 +32,7 @@ const Navbar = ({
                 }`}
                 aria-label={item.label}
               >
-                <Icon className="h-6 w-6" />
+                <Icon className="h-4 w-4" />
               </button>
 
               {/* Tooltip */}
