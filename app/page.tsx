@@ -30,6 +30,7 @@ import { experiences, projects, education } from "@/lib/constants";
 import ResumeModal from "@/components/ResumeModal";
 import Navbar from "@/components/Navbar";
 import LoadingScreen from "@/components/LoadingScreen";
+import GitHubActivitySection from "@/components/GithubStats";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -370,7 +371,6 @@ export default function Portfolio() {
               </div>
             </div>
           </section>
-
           {/* About Section */}
           <section
             id="about"
@@ -428,7 +428,6 @@ export default function Portfolio() {
               </Card>
             </div>
           </section>
-
           {/* Experience Section */}
           <section
             id="experience"
@@ -498,7 +497,6 @@ export default function Portfolio() {
               </div>
             </div>
           </section>
-
           {/* Projects Section */}
           <section
             id="projects"
@@ -711,7 +709,6 @@ export default function Portfolio() {
               </div>
             </div>
           </section>
-
           {/* Skills Section */}
           <section
             id="skills"
@@ -1045,6 +1042,10 @@ export default function Portfolio() {
                 </Card>
               </div>
 
+              {/* Github */}
+              <div className="mb-12 sm:mb-16">
+                <GitHubActivitySection />
+              </div>
               {/* Certifications & Achievements */}
               <div className="mb-12 sm:mb-16">
                 <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
@@ -1149,7 +1150,6 @@ export default function Portfolio() {
               </div>
             </div>
           </section>
-
           {/* Collaborate Section */}
           <section
             id="collaborate"
@@ -1216,7 +1216,6 @@ export default function Portfolio() {
               </Card>
             </div>
           </section>
-
           {/* Floating Buttons */}
           <div className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 flex flex-col gap-3 sm:gap-4 z-20">
             <Button
