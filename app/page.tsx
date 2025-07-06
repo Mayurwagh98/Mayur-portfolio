@@ -1,35 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowRight,
-  Mail,
-  Globe,
-  Twitter,
-  ArrowUpRight,
-  Linkedin,
-  Phone,
-  MapPin,
-  Calendar,
-  Building,
-  GraduationCap,
-  Wrench,
-  X,
-  Code,
-  Server,
-  Cloud,
-  Zap,
-  Award,
-  Menu,
-} from "lucide-react";
-import { experiences, projects, education } from "@/lib/constants";
 import ResumeModal from "@/components/ResumeModal";
 import Navbar from "@/components/Navbar";
 import LoadingScreen from "@/components/LoadingScreen";
-import GitHubActivitySection from "@/components/GithubStats";
 import MobileNavbar from "@/components/MobileNavbar";
 import LeftProfile from "@/components/LeftProfile";
 import Hero from "@/components/Hero";
@@ -38,6 +12,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Collaborate from "@/components/Collaborate";
+import FloatingButtons from "@/components/FloatingButtons";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -95,10 +70,7 @@ export default function Portfolio() {
     setIsMobileMenuOpen(false);
   };
 
-  // Resume Modal Component
-
   // Loading Screen Component
-
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -143,21 +115,7 @@ export default function Portfolio() {
           {/* Collaborate Section */}
           <Collaborate />
           {/* Floating Buttons */}
-          <div className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 flex flex-col gap-3 sm:gap-4 z-20">
-            <Button
-              className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-2xl px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base"
-              asChild
-            >
-              <a href="mailto:mswagh98@gmail.com">Hire Me</a>
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-white text-black hover:bg-gray-100 rounded-2xl px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base"
-              onClick={() => setShowResume(true)}
-            >
-              View Resume
-            </Button>
-          </div>
+          <FloatingButtons setShowResume={setShowResume} />
         </div>
       </div>
     </div>
