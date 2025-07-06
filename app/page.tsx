@@ -213,40 +213,41 @@ export default function Portfolio() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="rounded-full bg-[#2a2a2a] hover:bg-[#3a3a3a] w-10 h-10"
+                    className="rounded-full bg-[#2a2a2a] hover:scale-110 hover:bg-[#0077b5]/80 transition transform duration-200 w-11 h-11"
                     asChild
                   >
                     <a
-                      href="https://www.linkedin.com/in/mayur-wagh"
+                      href="https://www.linkedin.com/in/mayur--wagh/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Linkedin className="h-4 w-4" />
+                      <Linkedin className="h-5 w-5 text-[#0A66C2]" />
                     </a>
                   </Button>
+
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="rounded-full bg-[#2a2a2a] hover:bg-[#3a3a3a] w-10 h-10"
+                    className="rounded-full bg-[#2a2a2a] hover:scale-110 hover:bg-[#EA4335]/80 transition transform duration-200 w-11 h-11"
                     asChild
                   >
                     <a href="mailto:mswagh98@gmail.com">
-                      <Mail className="h-4 w-4" />
+                      <Mail className="h-5 w-5 text-[#EA4335]" />
                     </a>
                   </Button>
+
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="rounded-full bg-[#2a2a2a] hover:bg-[#3a3a3a] w-10 h-10"
+                    className="rounded-full bg-[#2a2a2a] hover:scale-110 hover:bg-[#00B5D8]/80 transition transform duration-200 w-11 h-11"
                   >
-                    <Globe className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full bg-[#2a2a2a] hover:bg-[#3a3a3a] w-10 h-10"
-                  >
-                    <Twitter className="h-4 w-4" />
+                    <a
+                      href="https://github.com/Mayurwagh98"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Globe className="h-5 w-5 text-[#00B5D8]" />
+                    </a>
                   </Button>
                 </div>
 
