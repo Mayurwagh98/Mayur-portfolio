@@ -39,7 +39,7 @@ export const projects = [
       "Threadory is a feature-rich e-commerce frontend developed using React and Next.js. It provides users with a smooth shopping experience, including product browsing, detailed item pages, cart management, and user authentication. Designed with scalability and aesthetics in mind, it’s optimized for performance and responsiveness across all devices.",
     period: "Jul 2025 - Present",
     status: "In Development",
-    color: "from-purple-500 via-red-500 to-purple-600",
+    color: "from-yellow-500 via-red-500",
     tags: ["Next.js", "React.js", "Tailwind CSS", "Stripe", "Commerce.js"],
     features: [
       "Product Listing and Detail Pages",
@@ -73,7 +73,10 @@ export const projects = [
       "Skill Matching",
     ],
     metrics: { matches: "1K+", messages: "5K+", satisfaction: "92%" },
-    links: { live: "#", github: "#" },
+    links: {
+      live: "http://13.51.47.215/",
+      github: "https://github.com/Mayurwagh98/DevMatch-frontend",
+    },
     icon: "💻",
   },
   {
@@ -94,7 +97,10 @@ export const projects = [
       "Responsive Design",
     ],
     metrics: { tracks: "10K+", users: "200+", uptime: "99.9%" },
-    links: { live: "#", github: "#" },
+    links: {
+      live: "https://nextjs-music-8u1h-hovfswjhb-mayurwagh98s-projects.vercel.app/",
+      github: "https://github.com/Mayurwagh98/nextjs-music",
+    },
     icon: "🎵",
   },
   {
@@ -117,7 +123,7 @@ export const projects = [
     ],
     metrics: { users: "100+", messages: "10,000+", uptime: "99.9%" },
     links: {
-      live: "https://chat-app-mayur.vercel.app",
+      live: "https://chatapp-socket-io.netlify.app/",
       github: "https://github.com/Mayurwagh98/chat_application",
     },
     icon: "💬",

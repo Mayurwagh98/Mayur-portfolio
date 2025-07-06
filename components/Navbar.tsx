@@ -1,4 +1,12 @@
 import { Home, Folder, Wrench, Briefcase, Edit, MailIcon } from "lucide-react";
+export const navItems = [
+  { id: "home", icon: Home, label: "Home" },
+  { id: "about", icon: Edit, label: "About" },
+  { id: "experience", icon: Briefcase, label: "Experience" },
+  { id: "projects", icon: Folder, label: "Projects" },
+  { id: "skills", icon: Wrench, label: "Skills" },
+  { id: "collaborate", icon: MailIcon, label: "Contact" },
+];
 const Navbar = ({
   activeSection,
   scrollToSection,
@@ -6,14 +14,6 @@ const Navbar = ({
   activeSection: string;
   scrollToSection: (sectionId: string) => void;
 }) => {
-  const navItems = [
-    { id: "home", icon: Home, label: "Home" },
-    { id: "about", icon: Edit, label: "About" },
-    { id: "experience", icon: Briefcase, label: "Experience" },
-    { id: "projects", icon: Folder, label: "Projects" },
-    { id: "skills", icon: Wrench, label: "Skills" },
-    { id: "collaborate", icon: MailIcon, label: "Contact" },
-  ];
   return (
     <nav className="hidden lg:block fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
       <div className="flex items-center gap-2 bg-[#1a1a1a] rounded-2xl p-2 border border-[#2a2a2a] backdrop-blur-md">
@@ -32,7 +32,7 @@ const Navbar = ({
                 }`}
                 aria-label={item.label}
               >
-                <Icon className="h-6 w-6" />
+                <Icon className="h-4 w-4" />
               </button>
 
               {/* Tooltip */}
