@@ -39,7 +39,7 @@ export const projects = [
       "Threadory is a feature-rich e-commerce frontend developed using React and Next.js. It provides users with a smooth shopping experience, including product browsing, detailed item pages, cart management, and user authentication. Designed with scalability and aesthetics in mind, it’s optimized for performance and responsiveness across all devices.",
     period: "Jul 2025 - Present",
     status: "In Development",
-    color: "from-purple-500 via-red-500 to-purple-600",
+    color: "from-yellow-500 via-red-500",
     tags: ["Next.js", "React.js", "Tailwind CSS", "Stripe", "Commerce.js"],
     features: [
       "Product Listing and Detail Pages",
