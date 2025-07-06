@@ -96,7 +96,7 @@ export default function Portfolio() {
         />
       )}
       {/* Main Content Layout */}
-      <div className="lg:flex">
+      <div className="pt-[10%] lg:pt-0 lg:flex">
         {/* Fixed Left Sidebar - Desktop Only */}
         <LeftProfile scrollToSection={scrollToSection} />
 
