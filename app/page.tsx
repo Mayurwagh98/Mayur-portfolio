@@ -25,13 +25,13 @@ import {
   Award,
   Menu,
 } from "lucide-react";
-import Image from "next/image";
 import { experiences, projects, education } from "@/lib/constants";
 import ResumeModal from "@/components/ResumeModal";
-import Navbar, { navItems } from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 import LoadingScreen from "@/components/LoadingScreen";
 import GitHubActivitySection from "@/components/GithubStats";
 import MobileNavbar from "@/components/MobileNavbar";
+import LeftProfile from "@/components/LeftProfile";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -120,97 +120,7 @@ export default function Portfolio() {
       {/* Main Content Layout */}
       <div className="lg:flex">
         {/* Fixed Left Sidebar - Desktop Only */}
-        <div className="hidden lg:block fixed left-0 top-0 h-screen w-80 xl:w-96 p-6 z-10">
-          <div className="flex items-center h-full">
-            <Card className="bg-[#1a1a1a] border-[#2a2a2a] p-8 rounded-3xl w-full">
-              <CardContent className="p-0 text-center">
-                <div className="w-full h-[250px] mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-600 to-blue-600 p-1 ">
-                  <div className="w-full h-full rounded-2xl bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
-                    <Image
-                      src="/mayur-profile.jpeg"
-                      alt="Mayur Wagh"
-                      width={100}
-                      height={100}
-                      className="w-full h-full object-cover rounded-2xl"
-                      priority
-                    />
-                  </div>
-                </div>
-
-                <h2 className="text-2xl font-bold mb-2">
-                  <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
-                    Mayur Wagh
-                  </span>
-                </h2>
-                <p className="text-gray-400 mb-1">MERN Stack Developer</p>
-                <p className="text-gray-500 mb-4 flex items-center justify-center gap-1 text-sm">
-                  <MapPin className="h-4 w-4" />
-                  Nashik, Maharashtra
-                </p>
-
-                <div className="space-y-1 mb-6 text-sm">
-                  <div className="flex items-center justify-center gap-2 text-gray-400">
-                    <Mail className="h-4 w-4" />
-                    <span>mswagh98@gmail.com</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 text-gray-400">
-                    <Phone className="h-4 w-4" />
-                    <span>+91 820663529</span>
-                  </div>
-                </div>
-
-                <div className="flex justify-center space-x-3 mb-6">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full bg-[#2a2a2a] hover:scale-110 hover:bg-[#0077b5]/80 transition transform duration-200 w-11 h-11"
-                    asChild
-                  >
-                    <a
-                      href="https://www.linkedin.com/in/mayur--wagh/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Linkedin className="h-5 w-5 text-[#0A66C2]" />
-                    </a>
-                  </Button>
-
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full bg-[#2a2a2a] hover:scale-110 hover:bg-[#EA4335]/80 transition transform duration-200 w-11 h-11"
-                    asChild
-                  >
-                    <a href="mailto:mswagh98@gmail.com">
-                      <Mail className="h-5 w-5 text-[#EA4335]" />
-                    </a>
-                  </Button>
-
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full bg-[#2a2a2a] hover:scale-110 hover:bg-[#00B5D8]/80 transition transform duration-200 w-11 h-11"
-                  >
-                    <a
-                      href="https://github.com/Mayurwagh98"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Globe className="h-5 w-5 text-[#00B5D8]" />
-                    </a>
-                  </Button>
-                </div>
-
-                <Button
-                  className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-2xl py-4 text-base font-semibold"
-                  onClick={() => scrollToSection("collaborate")}
-                >
-                  Let's Talk
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+        <LeftProfile scrollToSection={scrollToSection} />
 
         {/* Scrollable Content */}
         <div className="lg:ml-80 xl:ml-96 flex-1">
