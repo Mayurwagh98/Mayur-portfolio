@@ -76,7 +76,7 @@ export default function Portfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#131617] text-white before:content-[''] before:absolute before:inset-0 before:bg-[radial-gradient(#222_1px,transparent_1px)] before:opacity-10 before:bg-[length:3px_3px]">
       {/* Resume Modal */}
       <ResumeModal setShowResume={setShowResume} showResume={showResume} />
       {/* Mobile Navigation */}
