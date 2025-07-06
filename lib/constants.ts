@@ -73,7 +73,10 @@ export const projects = [
       "Skill Matching",
     ],
     metrics: { matches: "1K+", messages: "5K+", satisfaction: "92%" },
-    links: { live: "#", github: "#" },
+    links: {
+      live: "http://13.51.47.215/",
+      github: "https://github.com/Mayurwagh98/DevMatch-frontend",
+    },
     icon: "💻",
   },
   {
@@ -94,7 +97,10 @@ export const projects = [
       "Responsive Design",
     ],
     metrics: { tracks: "10K+", users: "200+", uptime: "99.9%" },
-    links: { live: "#", github: "#" },
+    links: {
+      live: "https://nextjs-music-8u1h-hovfswjhb-mayurwagh98s-projects.vercel.app/",
+      github: "https://github.com/Mayurwagh98/nextjs-music",
+    },
     icon: "🎵",
   },
   {
@@ -117,7 +123,7 @@ export const projects = [
     ],
     metrics: { users: "100+", messages: "10,000+", uptime: "99.9%" },
     links: {
-      live: "https://chat-app-mayur.vercel.app",
+      live: "https://chatapp-socket-io.netlify.app/",
       github: "https://github.com/Mayurwagh98/chat_application",
     },
     icon: "💬",
