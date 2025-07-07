@@ -14,7 +14,7 @@ const MobileNavbar = ({
   return (
     <div className="lg:hidden">
       {/* Mobile Header */}
-      <div className="fixed top-0 left-0 right-0 bg-[#1a1a1a] border-b border-[#2a2a2a] p-4 z-50">
+      <div className="fixed top-0 left-0 right-0 bg-[#1a1a1a] border-b border-[#2a2a2a] p-3 z-50">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-lg font-bold">

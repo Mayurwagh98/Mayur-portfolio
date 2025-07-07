@@ -16,7 +16,7 @@ const LeftProfile = ({
       </div>
 
       {/* Mobile / Tablet View */}
-      <div className="block lg:hidden w-full p-4 mb-6">
+      <div className="block lg:hidden w-full p-6 mb-6 mt-10">
         <ProfileCard scrollToSection={scrollToSection} />
       </div>
     </>
