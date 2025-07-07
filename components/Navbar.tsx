@@ -16,7 +16,7 @@ const Navbar = ({
 }) => {
   return (
     <nav className="hidden lg:block fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="flex items-center gap-2 bg-[#1a1a1a] rounded-2xl p-2 border border-[#2a2a2a] backdrop-blur-md">
+      <div className="flex items-center gap-2 bg-black/50 backdrop-blur-md rounded-2xl p-2 border border-[#2a2a2a] shadow-md">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeSection === item.id;
@@ -28,7 +28,7 @@ const Navbar = ({
                 className={`p-3 rounded-xl transition-all duration-200 ${
                   isActive
                     ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white"
-                    : "text-gray-400 hover:text-white hover:bg-[#2a2a2a]"
+                    : "text-gray-400 hover:text-white hover:bg-[#2a2a2a]/80"
                 }`}
                 aria-label={item.label}
               >
