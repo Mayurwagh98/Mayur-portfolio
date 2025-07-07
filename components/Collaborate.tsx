@@ -45,7 +45,7 @@ const Collaborate = () => {
                   asChild
                 >
                   <a
-                    href="https://www.linkedin.com/in/mayur-wagh"
+                    href="https://www.linkedin.com/in/mayur--wagh/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
