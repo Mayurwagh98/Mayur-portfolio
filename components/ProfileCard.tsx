@@ -43,7 +43,7 @@ const ProfileCard = ({
           </div>
           <div className="flex items-center justify-center gap-2 text-gray-400">
             <Phone className="h-4 w-4" />
-            <span>+91 820663529</span>
+            <span>+91 8208663529</span>
           </div>
         </div>
 

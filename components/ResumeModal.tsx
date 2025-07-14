@@ -33,14 +33,14 @@ const ResumeModal = ({
         <div className="sticky top-0 bg-[#0a0a0a] border-b border-[#2a2a2a] p-4 sm:p-6 flex items-center justify-between">
           <h2 className="text-xl sm:text-2xl font-bold">Resume - Mayur Wagh</h2>
           <div className="flex gap-2">
-            <Button
+            {/* <Button
               size="icon"
               variant="ghost"
               className="rounded-full bg-[#2a2a2a] hover:bg-purple-600 w-8 h-8 sm:w-10 sm:h-10"
               onClick={() => window.print()}
             >
               <Download className="h-3 w-3 sm:h-4 sm:w-4" />
-            </Button>
+            </Button> */}
             <Button
               size="icon"
               variant="ghost"
@@ -67,7 +67,7 @@ const ResumeModal = ({
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
-                <span>+91 820663529</span>
+                <span>+91 8208663529</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
