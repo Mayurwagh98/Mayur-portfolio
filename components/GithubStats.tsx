@@ -1,29 +1,38 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
+import { Github } from "lucide-react";
+import { profile } from "@/lib/constants";
 
 export default function GitHubActivitySection() {
+  const [failed, setFailed] = useState(false);
+  if (failed) return null;
   return (
-    <section className="relative px-6 py-20 bg-transparent text-white">
-      <div className="max-w-5xl mx-auto text-center bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-3xl border border-purple-700/50 shadow-xl p-10 sm:p-16">
-        <h3 className="text-3xl sm:text-4xl font-extrabold mb-8">
-          🧑‍💻 GitHub{" "}
-          <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
-            Code Graph
-          </span>
-        </h3>
-
-        {/* Contribution Graph Image */}
-        <div className="flex justify-center items-center">
-          <Image
-            src="https://ghchart.rshah.org/Mayurwagh98"
-            alt="GitHub contributions graph"
-            width={900}
-            height={200}
-            className="rounded-xl border border-purple-600/40 p-4 shadow-lg dark:shadow-purple-800/20"
-          />
+    <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+        <div>
+          <h3 className="font-display text-xl sm:text-2xl font-bold">GitHub activity</h3>
+          <p className="text-sm text-gray-400">Contributions over the last year</p>
         </div>
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 self-start rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium hover:bg-white/10 transition-colors"
+        >
+          <Github className="h-4 w-4" /> {profile.githubUser}
+        </a>
       </div>
-    </section>
+      <div className="overflow-x-auto rounded-2xl bg-white p-3 sm:p-4">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`https://ghchart.rshah.org/7c3aed/${profile.githubUser}`}
+          alt={`${profile.githubUser}'s GitHub contribution graph`}
+          loading="lazy"
+          onError={() => setFailed(true)}
+          className="min-w-[640px] w-full h-auto"
+        />
+      </div>
+    </div>
   );
 }

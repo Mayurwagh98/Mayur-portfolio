@@ -1,21 +1,15 @@
+"use client";
+
+import { useEffect } from "react";
 import {
   certifications,
   education,
   experiences,
+  profile,
   projects,
-  skills,
+  skillGroups,
 } from "@/lib/constants";
-import { Button } from "./ui/button";
-import {
-  Mail,
-  Linkedin,
-  Phone,
-  MapPin,
-  GraduationCap,
-  X,
-  Download,
-} from "lucide-react";
-import { Badge } from "./ui/badge";
+import { Download, ExternalLink, Github, Linkedin, Mail, MapPin, Phone, X } from "lucide-react";
 
 const ResumeModal = ({
   setShowResume,
@@ -24,349 +18,151 @@ const ResumeModal = ({
   setShowResume: React.Dispatch<React.SetStateAction<boolean>>;
   showResume: boolean;
 }) => {
+  useEffect(() => {
+    if (!showResume) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setShowResume(false);
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [showResume, setShowResume]);
+
   if (!showResume) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
-      <div className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-3xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="sticky top-0 bg-[#0a0a0a] border-b border-[#2a2a2a] p-4 sm:p-6 flex items-center justify-between">
-          <h2 className="text-xl sm:text-2xl font-bold">Resume - Mayur Wagh</h2>
-          <div className="flex gap-2">
-            {/* <Button
-              size="icon"
-              variant="ghost"
-              className="rounded-full bg-[#2a2a2a] hover:bg-purple-600 w-8 h-8 sm:w-10 sm:h-10"
-              onClick={() => window.print()}
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Resume"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4"
+      onClick={() => setShowResume(false)}
+    >
+      <div
+        className="w-full max-w-4xl max-h-[95vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#0d0f10]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-white/10 bg-[#0d0f10]/95 backdrop-blur px-4 sm:px-6 py-4">
+          <h2 className="font-display text-lg sm:text-xl font-bold">Resume</h2>
+          <div className="flex items-center gap-2">
+            <a
+              href={profile.resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm hover:bg-white/10"
             >
-              <Download className="h-3 w-3 sm:h-4 sm:w-4" />
-            </Button> */}
-            <Button
-              size="icon"
-              variant="ghost"
-              className="rounded-full bg-[#2a2a2a] hover:bg-red-600 w-8 h-8 sm:w-10 sm:h-10"
+              <ExternalLink className="h-4 w-4" /> Open PDF
+            </a>
+            <a
+              href={profile.resumePdf}
+              download
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-violet-600 px-3 sm:px-4 py-2 text-sm font-semibold"
+            >
+              <Download className="h-4 w-4" /> Download PDF
+            </a>
+            <button
+              aria-label="Close resume"
               onClick={() => setShowResume(false)}
+              className="grid place-items-center h-9 w-9 rounded-full bg-white/5 hover:bg-red-600 transition-colors"
             >
-              <X className="h-3 w-3 sm:h-4 sm:w-4" />
-            </Button>
+              <X className="h-4 w-4" />
+            </button>
           </div>
         </div>
 
-        {/* Resume Content */}
-        <div className="p-4 sm:p-8 space-y-6 sm:space-y-8">
-          {/* Personal Information */}
-          <div className="text-center border-b border-[#2a2a2a] pb-6 sm:pb-8">
-            <h1 className="text-2xl sm:text-4xl font-bold mb-2">Mayur Wagh</h1>
-            <p className="text-lg sm:text-xl text-purple-400 mb-4">
-              MERN Stack Developer
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-gray-300 text-sm sm:text-base">
-              <div className="flex items-center gap-2">
-                <Mail className="h-3 w-3 sm:h-4 sm:w-4" />
-                <span className="break-all">mswagh98@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
-                <span>+91 8208663529</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                <span>Nashik, Maharashtra</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Linkedin className="h-3 w-3 sm:h-4 sm:w-4" />
-                <a
-                  href="https://www.linkedin.com/in/mayur-wagh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-purple-400"
-                >
-                  LinkedIn Profile
-                </a>
-              </div>
+        <div className="p-5 sm:p-8 space-y-8 text-sm sm:text-base">
+          <header className="text-center border-b border-white/10 pb-6">
+            <h1 className="font-display text-3xl sm:text-4xl font-bold mb-1">{profile.name}</h1>
+            <p className="text-purple-300 mb-4">{profile.role} · {profile.tagline}</p>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-gray-300 text-sm">
+              <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" />{profile.location}</span>
+              <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-1.5 hover:text-purple-300"><Mail className="h-4 w-4" />{profile.email}</a>
+              <a href={`tel:${profile.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-1.5 hover:text-purple-300"><Phone className="h-4 w-4" />{profile.phone}</a>
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-purple-300"><Linkedin className="h-4 w-4" />LinkedIn</a>
+              <a href={profile.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-purple-300"><Github className="h-4 w-4" />GitHub</a>
             </div>
-          </div>
+          </header>
 
-          {/* Professional Summary */}
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-purple-400">
-              Professional Summary
-            </h2>
-            <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-              Passionate MERN stack developer with 2+ years of experience in
-              creating innovative web solutions. Specialized in building
-              scalable, user-centric applications using modern technologies.
-              Proven track record of delivering high-quality projects from
-              conception to deployment. Strong background in both frontend and
-              backend development with expertise in React.js, Node.js, and
-              MongoDB. Experienced in mentoring and guiding junior developers.
-            </p>
-          </div>
+          <section>
+            <h3 className="text-purple-400 font-bold uppercase tracking-wider text-sm mb-3">Professional Summary</h3>
+            <p className="text-gray-300 leading-relaxed">{profile.summary}</p>
+          </section>
 
-          {/* Work Experience */}
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-              Work Experience
-            </h2>
-            <div className="space-y-4 sm:space-y-6">
-              {experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  className="border-l-2 border-purple-500 pl-4 sm:pl-6"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                    <h3 className="text-lg sm:text-xl font-bold">
-                      {exp.title}
-                    </h3>
-                    <span className="text-gray-400 text-sm sm:text-base">
-                      {exp.period}
-                    </span>
+          <section>
+            <h3 className="text-purple-400 font-bold uppercase tracking-wider text-sm mb-4">Experience</h3>
+            <div className="space-y-6">
+              {experiences.map((exp) => (
+                <div key={exp.company} className="border-l-2 border-purple-500/70 pl-4 sm:pl-5">
+                  <div className="flex flex-col sm:flex-row sm:justify-between">
+                    <p className="font-bold">{exp.company} <span className="font-normal text-gray-400">· {exp.location}</span></p>
+                    <p className="text-gray-400 text-sm">{exp.period}</p>
                   </div>
-                  <p className="text-purple-400 mb-3 text-sm sm:text-base">
-                    {exp.company}
-                  </p>
-                  <p className="text-gray-200 mb-4 sm:mb-6 text-sm sm:text-base">
-                    {exp.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {exp.achievements.map((achievement, achIndex) => (
-                      <li
-                        key={achIndex}
-                        className="flex items-start gap-2 text-gray-300 text-sm sm:text-base"
-                      >
-                        <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
+                  <p className="text-purple-300 text-sm mb-2">{exp.title}</p>
+                  <ul className="list-disc pl-5 space-y-1 text-gray-300 text-sm">
+                    {exp.achievements.map((a) => <li key={a}>{a}</li>)}
                   </ul>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          {/* Projects */}
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-              Key Projects
-            </h2>
-            <div className="space-y-4 sm:space-y-6">
-              {projects.map((project, index) => (
-                <div
-                  key={index}
-                  className="border border-[#2a2a2a] rounded-2xl p-4 sm:p-6"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-bold">
-                        {project.title}
-                      </h3>
-                      <p className="text-purple-400 text-sm sm:text-base">
-                        {project.subtitle}
-                      </p>
-                    </div>
-                    <span className="text-xs sm:text-sm text-gray-400 mt-1 sm:mt-0">
-                      {project.period}
-                    </span>
-                  </div>
-                  <p className="text-gray-300 mb-4 text-sm sm:text-base">
-                    {project.description}
-                  </p>
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2 text-purple-400 text-sm sm:text-base">
-                      Key Features:
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {project.features.map((feature, featureIndex) => (
-                        <div
-                          key={featureIndex}
-                          className="flex items-center gap-2 text-gray-300"
-                        >
-                          <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
-                          <span className="text-xs sm:text-sm">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2 text-purple-400 text-sm sm:text-base">
-                      Technologies Used:
-                    </h4>
-                    <div className="flex flex-wrap gap-1 sm:gap-2">
-                      {project.tags.map((tag, tagIndex) => (
-                        <Badge
-                          key={tagIndex}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2 sm:gap-4">
-                    {Object.entries(project.metrics).map(
-                      ([key, value], metricIndex) => (
-                        <div key={metricIndex} className="text-center">
-                          <div className="text-sm sm:text-lg font-bold text-purple-400">
-                            {value}
-                          </div>
-                          <div className="text-xs text-gray-400 capitalize">
-                            {key}
-                          </div>
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technical Skills */}
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-              Technical Skills
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <h3 className="text-base sm:text-lg font-semibold mb-3">
-                  Frontend Development
-                </h3>
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {skills.frontend.map((skill, index) => (
-                    <Badge
-                      key={index}
-                      variant="secondary"
-                      className="bg-[#2a2a2a] text-gray-300 border-[#3a3a3a] hover:bg-[#3a3a3a] text-xs px-2 py-1"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-semibold mb-3">
-                  Backend Development
-                </h3>
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {skills.backend.map((skill, index) => (
-                    <Badge
-                      key={index}
-                      variant="secondary"
-                      className="bg-[#2a2a2a] text-gray-300 border-[#3a3a3a] hover:bg-[#3a3a3a] text-xs px-2 py-1"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-semibold mb-3">
-                  Tools & Technologies
-                </h3>
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {skills.tools.map((skill, index) => (
-                    <Badge
-                      key={index}
-                      variant="secondary"
-                      className="bg-[#2a2a2a] text-gray-300 border-[#3a3a3a] hover:bg-[#3a3a3a] text-xs px-2 py-1"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-semibold mb-3">
-                  Cloud & DevOps
-                </h3>
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {skills.devops.map((skill, index) => (
-                    <Badge
-                      key={index}
-                      variant="secondary"
-                      className="bg-[#2a2a2a] text-gray-300 border-[#3a3a3a] hover:bg-[#3a3a3a] text-xs px-2 py-1"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Education */}
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-              Education
-            </h2>
+          <section>
+            <h3 className="text-purple-400 font-bold uppercase tracking-wider text-sm mb-4">Projects</h3>
             <div className="space-y-4">
-              {education.map((edu, index) => (
-                <div
-                  key={index}
-                  className="border-l-2 border-purple-500 pl-4 sm:pl-6"
-                >
-                  <h3 className="text-base sm:text-lg font-bold">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-purple-400 text-sm sm:text-base">
-                    {edu.institution}
-                  </p>
-                  <p className="text-gray-400 text-sm sm:text-base">
-                    {edu.period}
-                  </p>
+              {projects.map((p) => (
+                <div key={p.slug} className="rounded-2xl border border-white/10 p-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
+                    <p className="font-bold">{p.title} <span className="font-normal text-gray-400">· {p.subtitle} ({p.year})</span></p>
+                    <div className="flex gap-3 text-sm">
+                      <a href={p.links.live} target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:underline">Live</a>
+                      <a href={p.links.github} target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:underline">GitHub</a>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-sm mb-2">{p.description}</p>
+                  <p className="text-gray-400 text-xs">{p.tags.join(" · ")}</p>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          {/* Certifications */}
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-              Certifications
-            </h2>
-            <div className="space-y-3">
-              {certifications.map((cert, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-3 text-gray-300 text-sm sm:text-base"
-                >
-                  <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-purple-400 flex-shrink-0" />
-                  <span>{cert}</span>
+          <section>
+            <h3 className="text-purple-400 font-bold uppercase tracking-wider text-sm mb-4">Core Skills</h3>
+            <dl className="space-y-2 text-sm">
+              {skillGroups.map((g) => (
+                <div key={g.title} className="sm:flex gap-2">
+                  <dt className="font-semibold text-white sm:w-32 shrink-0">{g.title}</dt>
+                  <dd className="text-gray-300">{g.items.join(", ")}</dd>
                 </div>
               ))}
-            </div>
-          </div>
+            </dl>
+          </section>
 
-          {/* Additional Information */}
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400">
-              Additional Information
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <h3 className="text-base sm:text-lg font-semibold mb-3">
-                  Languages
-                </h3>
-                <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
-                  <li>• English (Professional)</li>
-                  <li>• Hindi (Native)</li>
-                  <li>• Marathi (Native)</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-semibold mb-3">
-                  Interests
-                </h3>
-                <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
-                  <li>• Open Source Contribution</li>
-                  <li>• Mentoring Developers</li>
-                  <li>• Technology Blogging</li>
-                  <li>• Continuous Learning</li>
-                </ul>
-              </div>
+          <section className="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-purple-400 font-bold uppercase tracking-wider text-sm mb-3">Education</h3>
+              <ul className="space-y-3 text-sm">
+                {education.map((e) => (
+                  <li key={e.degree}>
+                    <p className="font-semibold">{e.degree}</p>
+                    <p className="text-gray-400">{e.institution} · {e.period}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+            <div>
+              <h3 className="text-purple-400 font-bold uppercase tracking-wider text-sm mb-3">Certifications</h3>
+              <ul className="space-y-3 text-sm">
+                {certifications.map((c) => (
+                  <li key={c.title}>
+                    <p className="font-semibold">{c.title}</p>
+                    <p className="text-gray-400">{c.issuer} · {c.date}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
         </div>
       </div>
     </div>

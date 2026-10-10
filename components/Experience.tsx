@@ -1,70 +1,85 @@
-import { Building, Calendar } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
+import { Calendar, MapPin } from "lucide-react";
 import { experiences } from "@/lib/constants";
+import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
 
 const Experience = () => {
   return (
-    <section
-      id="experience"
-      className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-20"
-    >
+    <section id="experience" className="px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28">
       <div className="max-w-5xl w-full">
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-            Professional
-            <br />
-            <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
-              Experience
-            </span>
-          </h2>
-        </div>
+        <SectionHeading
+          eyebrow="Experience"
+          title="Where I've"
+          accent="shipped"
+          description="Three teams, one constant: owning features from the database to the deploy."
+        />
 
-        <div className="space-y-6 sm:space-y-8">
-          {experiences.map((exp: any, index: number) => (
-            <Card
-              key={index}
-              className="bg-[#1a1a1a] border-[#2a2a2a] rounded-3xl overflow-hidden group hover:scale-105 transition-transform duration-300"
-            >
-              <CardContent className="p-0">
-                <div className={`h-2 bg-gradient-to-r ${exp.color}`}></div>
-                <div className="p-4 sm:p-8">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+        <ol className="relative border-l border-white/10 ml-2 sm:ml-3 space-y-10">
+          {experiences.map((exp, index) => (
+            <li key={exp.company} className="relative pl-6 sm:pl-10">
+              <span
+                aria-hidden
+                className={`absolute -left-[7px] top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#0d0f10] ${
+                  index === 0 ? "bg-purple-400 shadow-[0_0_16px_rgba(167,139,250,0.8)]" : "bg-gray-600"
+                }`}
+              />
+              <Reveal>
+                <article className="group rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-8 hover:border-purple-500/40 hover:bg-white/[0.05] transition-colors">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">
-                        {exp.title}
-                      </h3>
-                      <div className="flex items-center gap-2 text-purple-400 mb-2">
-                        <Building className="h-3 w-3 sm:h-4 sm:w-4" />
-                        <span className="text-sm sm:text-base">
-                          {exp.company}
-                        </span>
-                      </div>
+                      <h3 className="font-display text-xl sm:text-2xl font-bold">{exp.company}</h3>
+                      <p className="text-purple-300 font-medium">{exp.title}</p>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-400 mt-2 lg:mt-0">
-                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                      <span className="text-sm sm:text-base">{exp.period}</span>
+                    <div className="flex flex-col sm:items-end gap-1 text-sm text-gray-400 shrink-0">
+                      <span className="inline-flex items-center gap-1.5">
+                        <Calendar className="h-4 w-4" />
+                        {exp.period}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <MapPin className="h-4 w-4" />
+                        {exp.location}
+                      </span>
                     </div>
                   </div>
-                  <p className="text-gray-200 mb-4 sm:mb-6 text-sm sm:text-base">
-                    {exp.description}
-                  </p>
-                  <div className="space-y-2">
-                    {exp.achievements.map(
-                      (achievement: string, achIndex: number) => (
-                        <div key={achIndex} className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
-                          <p className="text-gray-200 text-sm sm:text-base">
-                            {achievement}
-                          </p>
-                        </div>
-                      )
-                    )}
+
+                  <p className="text-gray-300 mb-5">{exp.description}</p>
+
+                  <ul className="space-y-2.5 mb-6">
+                    {exp.achievements.map((a) => {
+                      const [lead, ...rest] = a.split(": ");
+                      const hasLead = rest.length > 0 && lead.length < 30;
+                      return (
+                        <li key={a} className="flex gap-3 text-sm sm:text-[15px] text-gray-300 leading-relaxed">
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0" />
+                          <span>
+                            {hasLead ? (
+                              <>
+                                <span className="text-white font-medium">{lead}:</span> {rest.join(": ")}
+                              </>
+                            ) : (
+                              a
+                            )}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-gray-300"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </article>
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

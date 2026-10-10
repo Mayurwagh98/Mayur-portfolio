@@ -1,177 +1,233 @@
+// Single source of truth for portfolio content. Keep in sync with the resume PDF in /public.
+
+export const profile = {
+  name: "Mayur Wagh",
+  role: "MERN Full Stack Developer",
+  tagline: "React · Next.js · Node.js · Express · MongoDB",
+  location: "Nashik, Maharashtra",
+  email: "mswagh98@gmail.com",
+  phone: "+91 8208663529",
+  linkedin: "https://www.linkedin.com/in/mayur--wagh/",
+  github: "https://github.com/Mayurwagh98",
+  githubUser: "Mayurwagh98",
+  resumePdf: "/Mayur_Wagh_Full_Stack_Developer.pdf",
+  summary:
+    "MERN Full Stack Developer with 3+ years of experience building production-grade web applications end-to-end across React.js, Next.js, Node.js, Express.js and MongoDB. Proven track record of shipping AI-powered platforms, designing scalable REST APIs and optimizing page-load and API performance.",
+};
+
+export const stats = [
+  { value: "3+", label: "Years of\nexperience" },
+  { value: "100+", label: "Developers\nmentored" },
+  { value: "3", label: "Companies\nshipped at" },
+];
+
 export const experiences = [
   {
     title: "MERN Full Stack Developer",
-    company: "Intervue Labs Pvt. Ltd.",
-    period: "Jun 2023 - Present",
+    company: "InCruiter",
+    location: "Bengaluru, India",
+    period: "Jul 2025 – Jun 2026",
     description:
-      "Spearheaded the development of an AI-driven interview platform designed to eliminate the need for human intervention in the interview process.",
+      "Owned end-to-end delivery of feature modules across a React frontend and Node.js/Express backend for recruiter and candidate workflows.",
     achievements: [
-      "Built platform from scratch using React.js, Next.js, Node.js, Express.js, MongoDB, Tailwind CSS",
-      "Developed autonomous interview bot for seamless candidate experience",
-      "Contributed to end-to-end design, development, and deployment",
-      "Streamlined recruitment process, reducing manual effort and improving efficiency",
+      "Owned end-to-end delivery of multiple feature modules across a React frontend and Node.js/Express backend, working with product, design and QA.",
+      "Designed and shipped REST APIs covering authentication, validation and core business logic for recruiter and candidate workflows.",
+      "Implemented JWT-based authentication and role-based access control (RBAC) to secure recruiter and candidate flows.",
+      "Delivered in an Agile, ticket-driven environment with clear acceptance criteria, code reviews and reliable releases.",
     ],
-    color: "from-blue-500 to-purple-600",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "RBAC"],
+  },
+  {
+    title: "MERN Full Stack Developer",
+    company: "Intervue Labs Pvt. Ltd.",
+    location: "Bengaluru, India",
+    period: "Jun 2023 – Jul 2025",
+    description:
+      "Led end-to-end development of an AI-driven interview automation platform conducting hundreds of interviews per month without human intervention.",
+    achievements: [
+      "AI Interview Platform: architected services, designed schemas and shipped both frontend and backend for a platform running hundreds of interviews a month autonomously.",
+      "Backend: built services in Node.js, Express.js and MongoDB, including schema modeling, optimized queries, indexing and secure handling of candidate data.",
+      "Frontend: built a scalable React.js and Next.js frontend with server-side rendering, improving initial load time and SEO.",
+      "Bot Automation: developed an interview bot that autonomously interacts with candidates, reducing recruiter effort and increasing completion rates.",
+      "Reliability: owned development, testing and production deployments, ensuring high system stability and minimal post-release issues.",
+    ],
+    tech: ["Next.js", "React.js", "Node.js", "Express.js", "MongoDB", "SSR"],
   },
   {
     title: "Instructional Associate",
     company: "Masai School (EdTech)",
-    period: "Apr 2022 - Feb 2023",
+    location: "Bengaluru, India",
+    period: "Apr 2022 – Feb 2023",
     description:
-      "Provided technical guidance and resolved doubts for students in the MERN stack, enhancing their understanding and proficiency.",
+      "Mentored aspiring developers in the MERN stack and helped improve how the curriculum was delivered.",
     achievements: [
-      "Guided students in MongoDB, Express.js, React, Node.js",
-      "Conducted and managed student evaluations",
-      "Enhanced overall educational experience for students",
-      "Collaborated with team to improve curriculum delivery",
+      "Mentored 100+ aspiring developers in the MERN stack through code reviews, live sessions and one-on-one problem solving.",
+      "Conducted technical evaluations and helped improve curriculum effectiveness.",
     ],
-    color: "from-green-500 to-teal-600",
+    tech: ["MongoDB", "Express.js", "React", "Node.js", "Mentoring"],
   },
 ];
 
-export const projects = [
+export type Project = {
+  slug: "front-row" | "docspace" | "music";
+  title: string;
+  subtitle: string;
+  year: string;
+  description: string;
+  highlights: string[];
+  tags: string[];
+  links: { live: string; github: string };
+  accent: string; // tailwind gradient stops
+  image: string; // real screenshot of the live app, in /public/projects
+};
+
+export const projects: Project[] = [
   {
-    title: "Threadory",
-    subtitle: "Modern E-Commerce Web App",
+    slug: "front-row",
+    title: "Front Row",
+    subtitle: "Real-Time Seat Booking Platform",
+    year: "2026",
     description:
-      "A sleek and responsive e-commerce platform designed for selling high-quality fashion apparel. Built with modern UI/UX practices and full shopping cart functionality.",
-    longDescription:
-      "Threadory is a feature-rich e-commerce frontend developed using React and Next.js. It provides users with a smooth shopping experience, including product browsing, detailed item pages, cart management, and user authentication. Designed with scalability and aesthetics in mind, it’s optimized for performance and responsiveness across all devices.",
-    period: "Jul 2025 - Present",
-    status: "In Development",
-    color: "from-yellow-500 via-red-500",
-    tags: ["Next.js", "React.js", "Tailwind CSS", "Stripe", "Commerce.js"],
-    features: [
-      "Product Listing and Detail Pages",
-      "Cart and Checkout Flow",
-      "User Authentication",
-      "Responsive Design",
-      "Stripe Payment Integration",
+      "A cinema booking app where two users can never book the same seat, and everyone watching a screening sees seats being taken live.",
+    highlights: [
+      "Atomic Redis seat locks with 5-minute holds — a losing request gets a 409, not a double booking",
+      "MongoDB transactions at checkout; prices read from the database, never trusted from the client",
+      "Live seat updates over Socket.io for every viewer of a screening",
+      "JWT auth with RBAC — admins add movies and schedule screenings",
     ],
-    metrics: { products: "100+", users: "500+", ordersProcessed: "200+" },
+    tags: ["React", "Express", "MongoDB", "Upstash Redis", "Socket.io", "JWT", "Tailwind"],
     links: {
-      live: "https://threadory.vercel.app",
-      github: "https://github.com/Mayurwagh98/threadory-frontend",
+      live: "https://front-row-sand.vercel.app/",
+      github: "https://github.com/Mayurwagh98/front-row",
     },
-    icon: "🛍️",
+    accent: "from-amber-400 via-orange-500 to-rose-500",
+    image: "/projects/front-row.jpg",
   },
   {
-    title: "DevMatch Network",
-    subtitle: "Developer Networking Platform",
+    slug: "docspace",
+    title: "DocSpace",
+    subtitle: "Collaborative Document Editor",
+    year: "2025",
     description:
-      "Tinder-inspired networking platform for developers featuring swipe-based matching, secure authentication, and real-time messaging capabilities.",
-    longDescription:
-      "Connect developers worldwide through an innovative matching system, enabling professional networking, collaboration opportunities, and skill-based connections.",
-    period: "Apr 2024 - May 2024",
-    status: "Completed",
-    color: "from-orange-500 via-red-500 to-pink-600",
-    tags: ["React.js", "Node.js", "Socket.io", "JWT", "MongoDB", "DaisyUI"],
-    features: [
-      "Swipe Matching",
-      "Real-time Chat",
-      "Profile Verification",
-      "Skill Matching",
+      "A lightweight collaborative editor with rich-text editing, role-based sharing and autosave, deployed on Vercel.",
+    highlights: [
+      "Rich-text editing with TipTap — headings, lists, bold, italic, underline, strikethrough",
+      "Role-based sharing: invite people as editor or viewer",
+      "Autosave 1.5s after typing stops, plus manual save",
+      "Import .docx and .txt files straight into a document",
     ],
-    metrics: { matches: "1K+", messages: "5K+", satisfaction: "92%" },
+    tags: ["React 18", "TipTap", "Node.js", "Express.js", "MongoDB", "JWT", "Vercel"],
     links: {
-      live: "http://13.51.47.215/",
-      github: "https://github.com/Mayurwagh98/DevMatch-frontend",
+      live: "https://doc-editor-ruby.vercel.app/login",
+      github: "https://github.com/Mayurwagh98/doc-editor",
     },
-    icon: "💻",
+    accent: "from-sky-400 via-blue-500 to-indigo-600",
+    image: "/projects/docspace.jpg",
   },
   {
+    slug: "music",
     title: "NextJS Music Platform",
-    subtitle: "Modern Music Streaming App",
+    subtitle: "Cadence Music Academy · Next.js App Router",
+    year: "2024",
     description:
-      "Sleek and responsive music streaming application with intuitive user interface, advanced search capabilities, and seamless audio playback experience.",
-    longDescription:
-      "A comprehensive music platform featuring playlist management, social sharing, and personalized recommendations powered by modern web technologies.",
-    period: "Jan 2024 - Mar 2024",
-    status: "Completed",
-    color: "from-purple-500 via-pink-500 to-rose-600",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "Audio API"],
-    features: [
-      "Streaming Audio",
-      "Playlist Management",
-      "Social Features",
-      "Responsive Design",
+      "A full-stack music-school app: browse and search courses, play audio previews that keep going as you move around the site, sign up and enroll — server-rendered with Next.js and deployed on Vercel.",
+    highlights: [
+      "Course catalog with search and filters (instrument, level, instructor) kept in the URL",
+      "Persistent audio player that keeps playing across page navigations",
+      "Accounts and enrollment via Server Actions with Zod validation; JWT sessions in httpOnly cookies",
+      "Partial prerendering, cached catalog data, per-course OG images and sitemap for SEO",
     ],
-    metrics: { tracks: "10K+", users: "200+", uptime: "99.9%" },
+    tags: ["Next.js", "React", "TypeScript", "MongoDB", "Server Actions", "Zod", "Vercel"],
     links: {
-      live: "https://nextjs-music-8u1h-hovfswjhb-mayurwagh98s-projects.vercel.app/",
+      live: "https://nextjs-music-eight.vercel.app/",
       github: "https://github.com/Mayurwagh98/nextjs-music",
     },
-    icon: "🎵",
-  },
-  {
-    title: "Real-Time Chat Application",
-    subtitle: "Full-Stack MERN Messaging App",
-    description:
-      "End-to-end encrypted chat platform enabling real-time communication between users. Built with robust authentication, responsive design, and modern tech stack.",
-    longDescription:
-      "A full-fledged chat application built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It supports user authentication with JWT, real-time messaging using Socket.IO, group chats, and a modern UI. Designed to handle multiple concurrent users seamlessly.",
-    period: "May 2023 - Jul 2023",
-    status: "Completed",
-    color: "from-blue-500 via-purple-500 to-indigo-600",
-    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.IO", "JWT"],
-    features: [
-      "Real-Time Messaging",
-      "Group Chat Support",
-      "User Authentication",
-      "Responsive UI",
-      "Socket.IO Integration",
-    ],
-    metrics: { users: "100+", messages: "10,000+", uptime: "99.9%" },
-    links: {
-      live: "https://chatapp-socket-io.netlify.app/",
-      github: "https://github.com/Mayurwagh98/chat_application",
-    },
-    icon: "💬",
+    accent: "from-fuchsia-500 via-purple-500 to-violet-600",
+    image: "/projects/music.jpg",
   },
 ];
 
+export const skillGroups = [
+  {
+    title: "Languages",
+    items: ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3"],
+  },
+  {
+    title: "Frontend",
+    items: [
+      "React.js",
+      "Next.js (SSR/SSG)",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "MUI",
+      "Responsive Design",
+      "Component Architecture",
+    ],
+  },
+  {
+    title: "Backend",
+    items: [
+      "Node.js",
+      "Express.js",
+      "REST API Design",
+      "JWT Authentication",
+      "RBAC",
+      "Socket.io",
+    ],
+  },
+  {
+    title: "Databases",
+    items: [
+      "MongoDB",
+      "Mongoose",
+      "Schema Design",
+      "Indexing",
+      "Query Optimization",
+      "Aggregation Pipelines",
+      "Redis",
+    ],
+  },
+  {
+    title: "Cloud & DevOps",
+    items: ["AWS (EC2, S3)", "Firebase", "Vercel", "Git & GitHub", "CI/CD basics", "Vite", "Postman"],
+  },
+  {
+    title: "Practices",
+    items: [
+      "Agile / Scrum",
+      "Code Reviews",
+      "System Design Fundamentals",
+      "Performance Optimization",
+      "API Integration",
+      "Production Deployments",
+    ],
+  },
+];
+
+// Kept for the resume modal (flat lists)
 export const skills = {
-  frontend: [
-    "React.js",
-    "HTML5",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "TypeScript",
-    "Tailwind CSS",
-    "MUI",
-    "Redux",
-    "Redux Toolkit",
-  ],
-  backend: ["Node.js", "Express.js", "MongoDB", "RESTful API", "JWT"],
-  tools: ["Git", "GitHub", "JIRA", "Postman", "MongoDB Compass", "NPM", "Vite"],
-  devops: ["Firebase", "AWS", "Vercel"],
-  additional: [
-    "CORS",
-    "API Integration",
-    "Debugging",
-    "Agile Methodology",
-    "Performance Optimization",
-    "Responsive Design",
-    "UI/UX",
-  ],
+  frontend: skillGroups[1].items,
+  backend: skillGroups[2].items,
+  databases: skillGroups[3].items,
+  devops: skillGroups[4].items,
 };
 
 export const education = [
   {
-    institution: "Masai School, Bangalore",
+    institution: "Masai School, Bengaluru",
     degree: "Full-Stack Web Development",
-    period: "Nov 2021 - May 2022",
+    period: "Nov 2021 – May 2022",
     type: "Bootcamp",
   },
   {
-    institution: "Matoshri College Of Engineering and Research Center",
-    degree: "B.E. (Mechanical Engineer)",
-    period: "Aug 2015 - Jul 2019",
+    institution: "Matoshri College of Engineering and Research Center, Nashik",
+    degree: "B.E. in Mechanical Engineering",
+    period: "Aug 2015 – Jul 2019",
     type: "Bachelor's",
   },
 ];
 
 export const certifications = [
-  "MERN Full Stack Development - Masai School (Apr 2023)",
-  "Basics of Web Development Certificate Course - Masai School (Dec 2021)",
+  { title: "MERN Full Stack Development", issuer: "Masai School", date: "Apr 2023" },
+  { title: "Basics of Web Development", issuer: "Masai School", date: "Dec 2021" },
 ];

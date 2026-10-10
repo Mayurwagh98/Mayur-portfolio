@@ -1,72 +1,101 @@
-import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
+"use client";
 
-const Collaborate = () => {
+import { useState } from "react";
+import { ArrowUpRight, Check, Copy, FileText, Github, Linkedin, Mail, Phone } from "lucide-react";
+import { profile } from "@/lib/constants";
+import Reveal from "./Reveal";
+
+const Collaborate = ({
+  setShowResume,
+}: {
+  setShowResume: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${profile.email}`;
+    }
+  };
+
+  const channels = [
+    { label: "LinkedIn", value: "in/mayur--wagh", href: profile.linkedin, icon: Linkedin },
+    { label: "GitHub", value: profile.githubUser, href: profile.github, icon: Github },
+    { label: "Phone", value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, "")}`, icon: Phone },
+  ];
+
   return (
-    <section
-      id="collaborate"
-      className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-20"
-    >
+    <section id="collaborate" className="px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28">
       <div className="max-w-5xl w-full">
-        <Card className="bg-gradient from-purple-600/10 via-blue-600/10 to-indigo-600/10 border-purple-500/20 rounded-3xl p-8 sm:p-12 lg:p-20 relative overflow-hidden backdrop-blur-sm">
-          {/* Background decorative elements */}
-          <div className="absolute top-4 left-4 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-4 right-4 w-24 h-24 bg-blue-500/10 rounded-full blur-lg"></div>
-
-          <CardContent className="p-0 relative z-10">
-            <div className="max-w-4xl">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 leading-tight text-white">
-                Let's
-                <br />
-                <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
-                  collaborate
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2rem] border border-purple-500/30 bg-gradient-to-br from-purple-600/20 via-[#14121c] to-indigo-700/20 p-7 sm:p-12 lg:p-16">
+            <div aria-hidden className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-purple-600/30 blur-3xl" />
+            <div className="relative">
+              <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-purple-300 mb-4">
+                Contact
+              </p>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] mb-5">
+                Let&apos;s build something{" "}
+                <span className="bg-gradient-to-r from-purple-300 to-indigo-300 bg-clip-text text-transparent">
+                  together.
                 </span>
               </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mb-6 sm:mb-8">
-                Ready to bring your ideas to life with cutting-edge web
-                development? Let's collaborate to create innovative solutions
-                that deliver exceptional user experiences and drive business
-                growth.
+              <p className="text-base sm:text-lg text-gray-300 max-w-2xl mb-8">
+                I&apos;m open to full-stack roles and interesting projects. Whether you&apos;re hiring or
+                just want to talk shop about React, Node or MongoDB — my inbox is open.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button
-                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-2xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold"
-                  asChild
+
+              <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-black px-6 py-4 font-semibold hover:bg-gray-200 transition-colors"
                 >
-                  <a href="mailto:mswagh98@gmail.com">
-                    <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    Email Me
-                  </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white rounded-2xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
-                  asChild
+                  <Mail className="h-5 w-5" />
+                  {profile.email}
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+                <button
+                  onClick={copyEmail}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 font-semibold hover:bg-white/10 transition-colors"
                 >
+                  {copied ? <Check className="h-5 w-5 text-emerald-400" /> : <Copy className="h-5 w-5" />}
+                  {copied ? "Copied!" : "Copy email"}
+                </button>
+                <button
+                  onClick={() => setShowResume(true)}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 font-semibold hover:bg-white/10 transition-colors"
+                >
+                  <FileText className="h-5 w-5" />
+                  Resume
+                </button>
+              </div>
+
+              <div className="grid sm:grid-cols-3 gap-3">
+                {channels.map(({ label, value, href, icon: Icon }) => (
                   <a
-                    href="https://www.linkedin.com/in/mayur--wagh/"
-                    target="_blank"
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
+                    className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 p-4 hover:border-purple-400/50 transition-colors"
                   >
-                    <Linkedin className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    LinkedIn
+                    <span className="grid place-items-center h-10 w-10 rounded-xl bg-white/5">
+                      <Icon className="h-5 w-5 text-purple-300" />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-xs text-gray-400">{label}</span>
+                      <span className="block truncate text-sm font-medium">{value}</span>
+                    </span>
                   </a>
-                </Button>
+                ))}
               </div>
             </div>
-
-            <Button
-              size="icon"
-              className="absolute top-6 sm:top-8 right-6 sm:right-8 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-full w-12 h-12 sm:w-16 sm:h-16"
-              asChild
-            >
-              <a href="mailto:mswagh98@gmail.com">
-                <ArrowUpRight className="h-6 w-6 sm:h-8 sm:w-8" />
-              </a>
-            </Button>
-          </CardContent>
-        </Card>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
